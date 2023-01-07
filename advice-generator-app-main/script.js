@@ -6,31 +6,26 @@ const url = "https://api.adviceslip.com/advice";
 const fetchedadvice = document.querySelector(".fetched-advice-container")
 
 
-window.addEventListener("load", function(){
+window.addEventListener("load", () => {
     setTimeout(() => {
         loader.style.cssText= "display: none;"
-    }, 1500);  
-    setTimeout(() => {
         fetchedadvice.style.cssText= "display: flex;" 
     }, 1500);   
 
+    getAdvice()
 })
 
-adviceBtn.addEventListener("click", 
-
-function loadAdvice (){
-        loader.style.cssText= "display: flex;"
-        fetchedadvice.style.cssText= "display: none;" 
+adviceBtn.addEventListener("click", () => {
+    loader.style.cssText= "display: flex;"
+    fetchedadvice.style.cssText= "display: none;" 
 
     setTimeout(() => {
         loader.style.cssText= "display: none;"
-    }, 1500);  
-    setTimeout(() => {
         fetchedadvice.style.cssText= "display: flex;" 
-    }, 1500);   
-}
-
-)
+    }, 1500);  
+    
+    getAdvice()
+})
 
 async function getAdvice(){
     const res =  await fetch(url);
@@ -38,6 +33,3 @@ async function getAdvice(){
     number.innerHTML = id;
     adviceText.textContent = advice;
 }
-
-getAdvice()
-adviceBtn.addEventListener("click", getAdvice)
